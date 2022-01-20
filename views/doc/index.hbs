@@ -1,0 +1,37 @@
+	<nav>
+	  <div class="nav-center">
+	    <h1><a href="/">{{title}}</a></h1>
+	  </div>
+	</nav>
+	<div class="container-fluid">
+		<main>
+			{{#if loginError }}
+			  <center>
+			    <div class="alert mt-3 alert-danger" role="alert" id='alert'>
+			      {{loginError}}
+			    </div>
+			  </center>
+			{{/if}}
+			  <main>
+			<form action="doc/login" method="POST">
+			  <center>
+			  	<h5>Welcome back!</h5>
+			  </center>
+			  <div class="form-row">
+			    <label for="name"> enter your username </label>
+			    <input type="text" name="username" id="username" autocomplete="false" required />
+			  </div>
+			  <div class="form-row">
+			    <label for="password"> password </label>
+			    <input type="password" name="password" id="password" autocomplete="false" required />
+			  </div>
+			  <button type="submit" class="block">Login</button>	  
+			</form>
+		</main>
+	</div>
+	<script type="text/javascript">
+	  $(document).ready(function() {
+	      $('#alert').delay(2500).slideUp(500);
+	  });
+	</script>
+	

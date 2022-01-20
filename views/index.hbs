@@ -1,0 +1,56 @@
+{{> nav}}
+<div class="container-fluid">
+		<main>
+			{{!-- messages modal here --}}
+			{{#if messages}}
+			  <center>
+			    <div class="alert mt-5 alert-default" role="alert">
+			    	Patient <b>{{messages}}</b> created successfully.
+			      <p>Note: keep your PID for future use.</p>
+			    </div>
+			  </center>
+			{{/if}}
+			{{#if logError}}
+			  <center>
+			    <div class="alert mt-5 alert-danger" role="alert" id='alert'>
+			    	{{logError}}
+			    </div>
+			  </center>
+			{{/if}}
+			<form id="continue" action="" method="post">
+			  <center>
+			  	<h5>Welcome back!</h5>
+			  </center>
+			  <div class="form-row">
+			    <label for="pid"> enter your PID </label>
+			    <input type="text" name="pid" id="pid" autocomplete="false" required />
+			  </div>
+			  <button id="submit-btn" type="submit" class="block">Continue</button>
+		      <center>
+		      	<p style="font-size:0.8em; margin-top:15px;">
+		      		Don't have PID? &nbsp;
+		      		<a href="#"  id="modalLink">
+		      			Get one here
+		      		</a>
+		      	</p>
+		      </center>			  
+			</form>
+		</main>
+	</div>
+	{{> guest/guest_modal}}
+	<!--close the modal by just clicking outside of the modal-->
+	<script>
+		var formAction = $("#continue").attr("action");
+		$(document).ready(function(){
+			$("#modalLink").click(function() {
+				document.getElementById('id01').style.display='block'				
+			});
+
+			$("#submit-btn").click(function() {
+				var pid = document.getElementById("pid").value	
+				$("#continue").attr("action", `/guest/chat/${pid}`);
+			});
+			$('#alert').delay(2500).slideUp(500);
+
+		})
+	</script>

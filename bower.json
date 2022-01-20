@@ -1,0 +1,20 @@
+{
+  "name": "antecare",
+  "description": "A chatbot build for antenatal care",
+  "main": "server.js",
+  "authors": [
+    "Abdull Yahuza"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}

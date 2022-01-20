@@ -1,0 +1,35 @@
+{
+  "name": "antecare",
+  "version": "1.0.0",
+  "description": "A chatbot build for antenatal care",
+  "main": "server.js",
+  "start": "nodemon server.js",
+  "dev": "nodemon server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abdull Yahuza",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "bcrypt": "^5.0.1",
+    "botbuilder": "^4.15.0",
+    "bower": "^1.8.13",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "hbs": "^4.0.4",
+    "mongoose": "^6.1.6",
+    "morgan": "^1.10.0",
+    "node-nlp": "^4.22.9",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "rivescript": "^2.2.0"
+  },
+  "nodemonConfig": {
+    "ext": "js,html,hbs,json,css"
+  }
+}

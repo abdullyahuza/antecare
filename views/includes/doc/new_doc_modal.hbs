@@ -1,0 +1,22 @@
+<div id="add-doc-modal" class="modal">
+  <span onclick="document.getElementById('add-doc-modal').style.display='none'" class="close">×
+  </span>
+  <form action="/doc/new-doc" method="POST">
+    <center>
+      <h5>Add a new Doctor</h5>
+    </center>
+    <div class="form-row">
+      <label for="firstname"> firstname </label>
+      <input type="text" name="firstname" id="firstname" autocomplete="false" required/>
+    </div>
+    <div class="form-row">
+      <label for="lastname"> lastname </label>
+      <input type="text" name="lastname" id="lastname" autocomplete="false" required/>
+    </div>
+    <div class="form-row">
+      <label for="middlename"> middlename </label>
+      <input type="text" name="middlename" id="middlename" autocomplete="false"/>
+    </div>
+    <button type="submit" class="block">Save</button>
+  </form>
+</div>

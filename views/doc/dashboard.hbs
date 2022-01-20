@@ -1,0 +1,27 @@
+    {{> doc/nav }}
+    <div class="container-fluid">
+    {{#if messages}}
+      <center>
+        <div class="alert mt-2 alert-default" role="alert" id='alert'>
+          {{messages}}
+        </div>
+      </center>
+    {{/if}}
+      <main>
+
+      </main>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#alert').delay(2500).slideUp(500);
+      });
+
+      //modal
+      var modal = document.getElementById('add-doc-modal');
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>

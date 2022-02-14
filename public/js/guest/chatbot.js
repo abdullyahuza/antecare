@@ -1,5 +1,6 @@
 var bot;
 var user = document.getElementById('guest').textContent;
+
 Audio.prototype.play = (function(play) {
   return function () {
     var audio = this,

@@ -1,5 +1,5 @@
 var pop;
-function setup() {
+/*function setup() {
   pop = new Audio('../../../pop.mp3');
   pop.volume = 0.5;
 	chatbot.loadFiles(
@@ -12,5 +12,16 @@ function setup() {
     ]
   );
 }
+*/
+
 // window.onload = setup;
+
+
+function setup() {
+  pop = new Audio('../../../pop.mp3');
+  pop.volume = 0.5;
+  on_load_success()
+  // chatbot.start();
+}
+
 window.onload = setup;

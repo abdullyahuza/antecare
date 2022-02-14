@@ -30,6 +30,9 @@
     "rivescript": "^2.2.0"
   },
   "nodemonConfig": {
-    "ext": "js,html,hbs,json,css"
+    "ext": "js,html,hbs,json,css,rive"
+  },
+  "engines": {
+    "node": "16.13.1"
   }
 }

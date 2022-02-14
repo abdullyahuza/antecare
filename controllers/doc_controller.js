@@ -34,19 +34,20 @@ const new_doc = (req, res) => {
 
 	let newDoc = new Doctor({
 		username: lastname+firstname,
-    	firstname: firstname,
-    	lastname: lastname,
-    	middlename: middlename,
-    	password: hash,
-    	salt: salt,
-  	})
+		firstname: firstname,
+		lastname: lastname,
+		middlename: middlename,
+		password: hash,
+		salt: salt,
+  })
 
-  	newDoc.save()
-      .then((doc) => {
-          console.log(doc);
-      });
-    req.flash('alert', `Dr. ${firstname} added successfully`)
-  	res.redirect('/doc/dashboard');
+	newDoc.save()
+  .then((doc) => {
+      console.log(doc);
+  });
+  
+  req.flash('alert', `Dr. ${firstname} added successfully`)
+	res.redirect('/doc/dashboard');
 }
 
 module.exports = {

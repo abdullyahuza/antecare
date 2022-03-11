@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css' />
+    <script src="/jquery/dist/jquery.min.js"></script>
+    {{!-- <link rel='stylesheet' href='/dataTables/media/css/dataTables.bootstrap.min.css' /> --}}
+    {{!-- <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" /> --}}
+    <link rel='stylesheet' href='/css/normalize.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
+  <body>
+{{{body}}}
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    {{!-- // <script src="/dataTables/media/js/dataTables.bootstrap.min.js"></script> --}}
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      // Call the dataTables jQuery plugin
+      $(document).ready(function() {
+        $('#dataTable').DataTable();
+      });
+    </script>
+  </body>
+</html>

@@ -4,7 +4,7 @@ const connectDB = require('./db/connect');
 
 const start = async () => {
   try {
-    await connectDB(process.env.URI);
+    await connectDB(process.env.MONGO_URI);
     app.listen(process.env.PORT, () =>
       console.log(`App listening at :${process.env.PORT}`)
     );

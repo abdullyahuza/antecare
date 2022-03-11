@@ -16,4 +16,6 @@ router.get('/', appController.app_index);
 
 router.post('/antecare/api/reply', appController.bot_reply);
 
+router.post('/antecare/api/save', appController.bot_save);
+
 module.exports = router;

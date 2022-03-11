@@ -67,7 +67,7 @@ app.use(session({
   resave: false, //don't save session if unmodified
   cookie: {maxAge: 1000*60*60*24 /*one day*/},
   store: MongoStore.create({
-    mongoUrl: /*'mongodb://localhost:27017/antecare'*/process.env.URI,
+    mongoUrl: /*'mongodb://localhost:27017/antecare'*/process.env.MONGO_URI,
     touchAfter: 24 * 3600 // time period in seconds
   }),
 }));

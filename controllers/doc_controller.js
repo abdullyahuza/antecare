@@ -2,6 +2,9 @@ const passport = require('passport');
 const Doctor = require('../models/doc');
 const passwordUtils = require('../functions/passwordUtils');
 // index controller
+
+//Question
+const Question = require('../models/questions');
 const doc_index = (req, res) => {
 	res.render('doc/index', {title:"AnteCare", loginError: req.flash('loginError')});
 }
@@ -13,9 +16,33 @@ const doc_login = passport.authenticate('local',
 		// successRedirect: '/doc/dashboard' 
 	}
 )
-// index controller
+
+// dash controller
 const doc_dash = (req, res) => {
 	res.render('doc/dashboard', {title:"AnteCare", messages: req.flash('alert')});
+}
+
+//question endpoint
+//delete blog
+const delete_question = (req, res) => {
+	const id = req.params.id;
+	Question.findByIdAndDelete(id)
+		.then((result) => {
+			req.flash('alert', `Deleted successfully.`)
+			res.json({redirect: '/doc/view-training'});
+		})
+		.catch((error) => console.log(error));
+}
+
+//training
+const training = (req, res) => {
+	//fetch Questions
+	Question.find().sort({createdAt: -1})
+		.then((result) => {
+			console.log(result)
+			res.render('doc/view-training', {layout:'train-layout.hbs', title:"AnteCare", messages: req.flash('alert'), questions:result});
+		})
+		.catch((error) => console.log(error))
 }
 
 const logout = (req, res) => {
@@ -54,6 +81,8 @@ module.exports = {
 	doc_index,
 	doc_login,
 	doc_dash,
+	training,
 	new_doc,
-	logout
+	logout,
+	delete_question
 }

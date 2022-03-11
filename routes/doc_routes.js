@@ -29,4 +29,10 @@ router.get('/logout', docController.logout);
 
 router.post('/new-doc', docController.new_doc);
 
+router.get('/view-training', docController.training);
+
+router.delete('/questions/:id', docController.delete_question);
+
+// router.get('/questions/:id', docController.question);
+
 module.exports = router;

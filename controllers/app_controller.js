@@ -1,6 +1,9 @@
 require("babel-polyfill");
 const RiveScript = require('rivescript')
 
+//Question model
+const Question = require('../models/questions');
+
 // Create the bot.
 var bot = new RiveScript();
 
@@ -14,8 +17,32 @@ bot.loadDirectory("./brain")
 		console.log("Error loading batch #" + loadcount + ": " + err + "\n");
 	});
 
+//api save
+const bot_save = (req, res) => {
+	//get data from json post
+	var pid = req.body.pid
+	var message = req.body.message
 
-//api users
+	// Make sure username and message are included.
+	if(pid && message){
+		console.log(req.body);
+		//save the message to db
+		const newQ = new Question({
+		  pid: pid,
+		  message: message
+		});
+
+		newQ.save()
+		  .then(function(newQuestionData){
+		  	console.log(newQuestionData)
+		  })
+		  .catch(function(err){console.log(err)});
+		  res.end();
+	}
+
+}
+
+//api reply
 const bot_reply = (req, res) => {
 	// Get data from the JSON post.
 	var username = req.body.username;
@@ -62,5 +89,6 @@ const app_index = (req, res) => {
 
 module.exports = {
 	app_index,
-	bot_reply
+	bot_reply,
+	bot_save
 }

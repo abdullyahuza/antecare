@@ -1,9 +1,9 @@
 ! version = 2.0
 // The Botmaster's Name
-! var master = <b>Aisha</b>
+! var master = Aisha Nasir
 
 // Bot Variables
-! var name     = <b>AnteCare</b>
+! var name     = AnteCare
 ! var fullname = AnteCare Respondant
 ! var age      = 35
 ! var birthday = October 12
@@ -13,6 +13,8 @@
 ! var user     = null
 ! var job      = Antenatal Care Support
 ! var mood     = happy
+! var color     = purple
+
 
 // Substitutions
 ! sub &quot;    = "

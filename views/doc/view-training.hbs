@@ -1,0 +1,86 @@
+    {{> doc/nav }}
+    <div class="container-fluid">
+    {{#if messages}}
+      <center>
+        <div class="alert mt-2 alert-default" role="alert" id='alert'>
+    {{messages}}
+        </div>
+      </center>
+    {{/if}}
+      <div class="row">
+        <div class="col-md-8" style="margin: 0 auto;">
+          <div class="card mt-4">
+              <div class="card-header">
+                  <i class="fas fa-table mr-1"></i>
+                  Staff DataTable
+              </div>
+              {{!-- Table here --}}
+              <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="10%">PID</th>
+                                <th>Message</th>
+                                <th width="20%">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        {{#if questions}}
+                            {{#each questions}}
+                                <tr>
+                                    <td>
+                                        <small>
+                                            {{this.pid}}
+                                        </small>
+                                    </td>
+                                    <td><small>{{this.message}}</small></td>
+                                    <td>
+                                        <center>
+                                            <small>
+                                                <a data-del="{{this.id}}" class="btn delete">Delete</a>
+                                            </small>
+                                        </center>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        {{/if}}                                                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+        const trashCan = document.querySelector('a.delete');
+
+        if(trashCan){
+            trashCan.addEventListener('click', (e) => {
+              const endpoint = `/doc/questions/${trashCan.dataset.del}`;
+              
+              fetch(endpoint, {
+                method: 'DELETE'
+              })
+                .then((response) => response.json())
+                .then((data) => window.location.href = data.redirect)
+                .catch((error) => console.log(error))
+            });
+        }
+
+      $(document).ready(function() {
+          $('#alert').delay(2500).slideUp(500);
+      });
+
+      //modal
+      var modal = document.getElementById('add-doc-modal');
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>

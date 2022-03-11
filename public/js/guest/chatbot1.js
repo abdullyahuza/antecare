@@ -10,6 +10,7 @@ Audio.prototype.play = (function(play) {
 })(Audio.prototype.play);
 
 var user = document.getElementById('guest').textContent;
+var pid = document.getElementById('pid').textContent;
 var api = '/antecare/api/reply';
 var chatbot = {
 	getReply: function(text) {
@@ -20,9 +21,17 @@ var chatbot = {
 	    .then(
 	      response => {
 	        let reply = response.data.reply.replace(/\n/g, "<br>");
-	        // console.log(response)
 	        if(reply !== ''){
 		        this.postReply(reply);
+		        console.log(reply);
+		        if(reply == "Sorry, I don't understand that."){
+		        	console.log(text);
+		        	axios.post('/antecare/api/save', {
+		        		"pid": pid,
+		        		"message": text
+		        	});
+
+		        }
 	        }
 	        else if(reply === ''){
 	        	this.postReply();

@@ -19,7 +19,7 @@ var MyBot = function(onReady) {
 
 	// Load the replies and process them.
 	self.rs.loadFile([
-		"../brain/begin.rive",
+		"../brain/vars.rive",
 		"../brain/clients.rive",
 		"../brain/myself.rive",
 		"./macro.rive", // the self-learning JavaScript macro itself

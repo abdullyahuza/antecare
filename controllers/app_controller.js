@@ -1,6 +1,16 @@
 require("babel-polyfill");
 const RiveScript = require('rivescript')
 
+const fs = require('fs')
+
+const { Configuration, OpenAIApi } = require("openai");
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+// ++++++++++++++++++++++++++++++++++++++++++++++
+
 //Question model
 const Question = require('../models/questions');
 
@@ -82,13 +92,65 @@ const bot_reply = (req, res) => {
 	});
 }
 
+const ai_reply = async (req, res) => {
+	var username = req.body.username;
+	var message  = req.body.message;
+	var vars     = req.body.vars;
+
+	// Make sure username and message are included.
+	if (typeof(username) === "undefined" || typeof(message) === "undefined") {
+		return error(res, "username and message are required keys");
+	}
+
+	// Copy any user vars from the post into RiveScript.
+	if (typeof(vars) !== "undefined") {
+		for (var key in vars) {
+			if (vars.hasOwnProperty(key)) {
+				bot.setUservar(username, key, vars[key]);
+			}
+		}
+	}
+
+	try {
+	  const completion = await openai.createCompletion({
+	    model: "text-davinci-003",
+	    prompt: generatePrompt(message),
+	    max_tokens: 1024,
+	    n: 1,
+      stop: null,
+      temperature: 0.5
+	  });
+	  // console.log(completion.data)
+	  // res.status(200).json({ result: completion.data.choices[0].text });
+	  res.status(200).json({
+	  	"status": "ok",
+	  	"reply": completion.data.choices[0].text,
+	  	"vars": vars
+	  });
+	} catch(error) {
+	  // Consider adjusting the error handling logic for your use case
+	  if (error.response) {
+	    console.error(error.response.status, error.response.data);
+	    res.status(error.response.status).json(error.response.data);
+	  }
+	}
+}
+
 // index controller
 const app_index = (req, res) => {
 	res.render('index', {title:"AnteCare", layout: 'layout.hbs', messages: req.flash('newGuestSuccessMsg')});
 }
 
+function generatePrompt(prompt) {
+  const capitalizedprompt =
+    prompt[0].toUpperCase() + prompt.slice(1).toLowerCase();
+    return prompt;
+}
+
+
 module.exports = {
 	app_index,
 	bot_reply,
+	ai_reply,
 	bot_save
 }

@@ -29,9 +29,9 @@
   - I only want your first name.
 
   + _
-  - <set user=<formal>>Nice to meet you, <b><get user></b>!\n
+  - <set name=<formal>>Nice to meet you, <b><get name></b>!\n
   ^What can I do for you today?{topic=random}
-  - <set user=<formal>>Nice to meet you, <b><get user></b>!\n
+  - <set name=<formal>>Nice to meet you, <b><get name></b>!\n
   ^How can I help you today?{topic=random}
 
 < topic
@@ -145,9 +145,9 @@
 - <set user=<formal>><get user>, I will call you that from now on.
 
 + ([*] my name|who am i|do you know who i am){weight=10}
-- Your name is <get user>.
-- You told me your name is <get user>.
-- Aren't you <get user>?
+- Your name is <get name>.
+- You told me your name is <get name>.
+- Aren't you <get name>?
 
 + (ok|okay)
 - The state of being satisfied.

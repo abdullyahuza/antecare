@@ -1,0 +1,143 @@
+breastfeeding
+
+pregnancy
+
+afterbirth
+
+amniotic
+
+anesthesia
+
+areola
+
+bairth plan
+
+bradley
+
+breech
+
+cesarean
+
+cerclage
+
+cervix
+
+colostrum
+
+conjoined
+
+cord blood
+
+(cystic [fibrosis]|cystic|fibrosis)
+
+diamniotic [twins]
+
+dichorionic [twins]
+
+dilation
+
+discordant
+
+dizygotic
+
+doula
+
+down syndrome
+
+ectopic [pregnancy]
+
+effacement
+
+engage
+
+epidural
+
+episiotomy
+
+external cephalic [version]
+
+fertility treatment
+
+fraternal [twins]
+
+full term
+
+high risk [pregnancy]
+
+identical [twins]
+
+induced
+
+(intrauterine growth [restriction]|iugr)
+
+kegels
+
+lamaze [technique]
+
+lanugo
+
+lightening
+
+linea [nigra][*]
+
+mfm
+
+mask of pregnancy
+
+meconium
+
+midwife
+
+monoamnionic
+
+monochorionic
+
+monozygotic
+
+mucus [plug]
+
+multiple pregnancy
+
+neural [tube]
+
+neural tube defect
+
+nuchal [fold]
+
+[obstetric] anesthetists
+
+perinatologists
+
+perineum
+
+placenta
+
+[placenta] previa
+
+[placental] abruption
+
+preterm
+
+preterm [labor]
+
+quickening
+
+round ligament [pain]
+
+spinal block
+
+surfactant
+
+teratogens
+
+toxoplasmosis
+
+twin to twin [transfusion]
+
+umbilical [cord]
+
+vanishing twin [syndrome]
+
+vernix
+
+viable

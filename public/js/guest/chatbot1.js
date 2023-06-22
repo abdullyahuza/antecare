@@ -21,17 +21,24 @@ var chatbot = {
 	    .then(
 	      response => {
 	        let reply = response.data.reply.replace(/\n/g, "<br>");
-	        if(reply !== ''){
+	        if(reply !== '' && reply !== "Sorry, I don't understand that." && reply !== "ERR: No Reply Matched"){
 		        this.postReply(reply);
-		        console.log(reply);
-		        if(reply == "Sorry, I don't understand that."){
-		        	console.log(text);
-		        	axios.post('/antecare/api/save', {
-		        		"pid": pid,
-		        		"message": text
-		        	});
+		        // console.log(reply);
+	        }
+	        else if(reply === "Sorry, I don't understand that." || reply === "ERR: No Reply Matched"){
 
-		        }
+	        	axios.post('/antecare/api/ai', {
+	    				"username": user,
+	    				"message": text,    		
+	        	})
+        	  .then(response => {
+	        		let reply = response.data.reply.replace(/\n/g, "");
+		        	this.postReply(reply);
+        	    // console.log('The request succeeded. Response: ', response.data);
+        	  })
+        	  .catch(error => {
+        	    console.log('The request failed: ', error);
+        	  });
 	        }
 	        else if(reply === ''){
 	        	this.postReply();

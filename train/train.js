@@ -5,6 +5,7 @@
 
 require("babel-polyfill");
 var readline = require("readline");
+var fs = require('fs');
 
 // This would just be require("rivescript") if not for running this
 // example from within the RiveScript project.
@@ -76,7 +77,6 @@ var bot = new MyBot(function() {
 		// sending user's IRC nickname.
 		nick = "Doc";
 		console.log("[" + nick + "] " + cmd);
-
 		// Handle commands.
 		if (cmd === "/quit") {
 			process.exit(0);
@@ -86,6 +86,16 @@ var bot = new MyBot(function() {
 			// learn the reply keeping the original punctuation and formatting.
 			bot.rs.setUservar(nick, "origMessage", cmd).then(function() {
 				bot.getReply(nick, cmd).then(function(reply) {
+					// let match = reply.match(/"([^"]*)"/);
+					// let quotedString = match !== null? match[1] : '';
+
+					// if(quotedString.length > 0){
+					// 	// write to file
+					// 	fs.appendFile('../brain/tokens.txt', `${quotedString}\n`, (err) => {
+					// 	  if (err) throw err;
+					// 	});
+					// }
+
 					bot.sendMessage(nick, reply);
 					rl.prompt();
 				});
